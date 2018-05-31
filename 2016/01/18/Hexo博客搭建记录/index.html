@@ -1,0 +1,761 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="hexo," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="&amp;emsp;&amp;emsp;Hexo是一款基于Node.js的静态博客框架。博客搭建的大致原理就是本地安装hexo，基于hexo框架生成静态博客文件，上传到服务器空间。 本地安装hexo安装nodejs运行环境&amp;emsp;&amp;emsp;由于要在本地运行hexo生成静态文件，自然要安装nodejs的运行环境，因为hexo是运行在nodejs环境下的。windows下分步安装nodejs运行环境是比较麻烦的">
+<meta name="keywords" content="hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo博客搭建记录">
+<meta property="og:url" content="http://yoursite.com/2016/01/18/Hexo博客搭建记录/index.html">
+<meta property="og:site_name" content="B.H.M.">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;Hexo是一款基于Node.js的静态博客框架。博客搭建的大致原理就是本地安装hexo，基于hexo框架生成静态博客文件，上传到服务器空间。 本地安装hexo安装nodejs运行环境&amp;emsp;&amp;emsp;由于要在本地运行hexo生成静态文件，自然要安装nodejs的运行环境，因为hexo是运行在nodejs环境下的。windows下分步安装nodejs运行环境是比较麻烦的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/image/Hexo博客搭建记录/1.png">
+<meta property="og:image" content="http://yoursite.com/image/Hexo博客搭建记录/2.png">
+<meta property="og:image" content="http://yoursite.com/image/Hexo博客搭建记录/3.png">
+<meta property="og:image" content="http://yoursite.com/image/Hexo博客搭建记录/4.png">
+<meta property="og:updated_time" content="2018-05-31T07:10:00.525Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo博客搭建记录">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;Hexo是一款基于Node.js的静态博客框架。博客搭建的大致原理就是本地安装hexo，基于hexo框架生成静态博客文件，上传到服务器空间。 本地安装hexo安装nodejs运行环境&amp;emsp;&amp;emsp;由于要在本地运行hexo生成静态文件，自然要安装nodejs的运行环境，因为hexo是运行在nodejs环境下的。windows下分步安装nodejs运行环境是比较麻烦的">
+<meta name="twitter:image" content="http://yoursite.com/image/Hexo博客搭建记录/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Hexo博客搭建记录 | B.H.M. </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">B.H.M.</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">马猴之家</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Hexo博客搭建记录
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-18T19:27:22+08:00" content="2016-01-18">
+              2016-01-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/问题记录/" itemprop="url" rel="index">
+                    <span itemprop="name">问题记录</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/18/Hexo博客搭建记录/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/18/Hexo博客搭建记录/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&emsp;&emsp;Hexo是一款基于<a href="http://baike.baidu.com/link?url=9BBFfsrnFUV-GOIvdk1sxwv89nntYkV-DxHTCu3wxMNeZd_NFICNxGQFyvNVAm9AYx225IUzRYPKqiRH-Po0K_" target="_blank" rel="noopener">Node.js</a>的静态博客框架。博客搭建的大致原理就是本地安装hexo，基于hexo框架生成静态博客文件，上传到服务器空间。</p>
+<h3 id="本地安装hexo"><a href="#本地安装hexo" class="headerlink" title="本地安装hexo"></a>本地安装hexo</h3><h4 id="安装nodejs运行环境"><a href="#安装nodejs运行环境" class="headerlink" title="安装nodejs运行环境"></a>安装nodejs运行环境</h4><p>&emsp;&emsp;由于要在本地运行hexo生成静态文件，自然要安装nodejs的运行环境，因为hexo是运行在nodejs环境下的。windows下分步安装nodejs运行环境是比较麻烦的，推荐直接下载安装，下载地址<a href="https://nodejs.org/en/" target="_blank" rel="noopener">参考此处</a>。</p>
+<h4 id="安装Git工具"><a href="#安装Git工具" class="headerlink" title="安装Git工具"></a>安装Git工具</h4><p>&emsp;&emsp;Git是一个分布式代码管理工具，git本身是不支持windows，windows下的客户端大都是封装了Cygwin以支持其在UNIX环境中运行，推荐<a href="https://desktop.github.com/" target="_blank" rel="noopener">安装github客户端</a>。</p>
+<h4 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h4><p>&emsp;&emsp;安装完github客户端后，打开git shell客户端，执行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;该命令就是使用nodejs安装包工具安装hexo。然后进入到需要创建hexo的文件夹下执行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;该命令是在该路径下生成hexo静态文件。执行完后便会在该文件夹下生成相应的文件。然后执行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;这两条命令分别是生成静态文件，打开本地服务器。然后在浏览器上输入：localhost:4000 即可查看默认静态博客，自此本地环境已经搭建完成。</p>
+<h3 id="GitHub上注册免费GitPages空间"><a href="#GitHub上注册免费GitPages空间" class="headerlink" title="GitHub上注册免费GitPages空间"></a>GitHub上注册免费GitPages空间</h3><h4 id="申请免费GitPages空间"><a href="#申请免费GitPages空间" class="headerlink" title="申请免费GitPages空间"></a>申请免费GitPages空间</h4><p>&emsp;&emsp;GitHub上新建一个代码库，但是repository name 格式需要 username.github.io ，这样GitHub才会认为是GitPages库。创建完代码库后setting中可以看到如下说明已经成功。<br><img src="/image/Hexo博客搭建记录/1.png" alt="1"></p>
+<h4 id="生成本地ssh添加"><a href="#生成本地ssh添加" class="headerlink" title="生成本地ssh添加"></a>生成本地ssh添加</h4><p>&emsp;&emsp;ssh key可以认为是两个git端的链接秘钥。关于git生成 ssh key，可以<a href="http://blog.csdn.net/hustpzb/article/details/8230454/" target="_blank" rel="noopener">参考此处</a>。生成完成本机的ssh key后需要填写到github上，这样本机git就能和github上代码库进行数据传输了。如图打开GitHub个人设置页面，找到ssh keys，添加一个新的ssh keys即可。<br><img src="/image/Hexo博客搭建记录/2.png" alt="2"></p>
+<h3 id="上传本地hexo静态文件到GitPages空间"><a href="#上传本地hexo静态文件到GitPages空间" class="headerlink" title="上传本地hexo静态文件到GitPages空间"></a>上传本地hexo静态文件到GitPages空间</h3><h4 id="配置hexo部署地址"><a href="#配置hexo部署地址" class="headerlink" title="配置hexo部署地址"></a>配置hexo部署地址</h4><p>&emsp;&emsp;修改Hexo的配置文件中的部署地址。打开hexo的根目录:<br><img src="/image/Hexo博客搭建记录/3.png" alt="3"><br>&emsp;&emsp;修改_config.yml文件中的结尾的deploy部分如下，其中repo填写刚才在github上申请的gitpages库的地址：<br><img src="/image/Hexo博客搭建记录/4.png" alt="3"></p>
+<h4 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h4><p>&emsp;&emsp;本地执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;其中generate执行后会生成静态网页文件。deploy为部署到github上命令。成功后即可在gitpages上访问到自己的blog了。</p>
+<h3 id="Markdown使用"><a href="#Markdown使用" class="headerlink" title="Markdown使用"></a>Markdown使用</h3><p>&emsp;&emsp;Markdown算是一种伪超文本标记语言，使用起来很简单。具体教程可以<a href="http://sspai.com/25137" target="_blank" rel="noopener">参考此处</a>。</p>
+<p>&emsp;&emsp;Hexo搭建博客需要一定的技术门槛，这里只是记录一下大致流程。具体细节可自行Google。</p>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hexo/" rel="tag">#hexo</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/28/关于view中measure方法测量出现偏差的bug/" rel="prev" title="关于view中measure方法测量出现偏差的bug">
+                关于view中measure方法测量出现偏差的bug <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/01/18/Hexo博客搭建记录/"
+           data-title="Hexo博客搭建记录" data-url="http://yoursite.com/2016/01/18/Hexo博客搭建记录/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="SongZ" />
+          <p class="site-author-name" itemprop="name">SongZ</p>
+          <p class="site-description motion-element" itemprop="description">记录一些东西</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/songszs" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Songszang" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i> Twitter
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/1267595990/profile?topnav=1&wvr=6&user=1&is_all=1" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#本地安装hexo"><span class="nav-number">1.</span> <span class="nav-text">本地安装hexo</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装nodejs运行环境"><span class="nav-number">1.1.</span> <span class="nav-text">安装nodejs运行环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装Git工具"><span class="nav-number">1.2.</span> <span class="nav-text">安装Git工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装hexo"><span class="nav-number">1.3.</span> <span class="nav-text">安装hexo</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHub上注册免费GitPages空间"><span class="nav-number">2.</span> <span class="nav-text">GitHub上注册免费GitPages空间</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#申请免费GitPages空间"><span class="nav-number">2.1.</span> <span class="nav-text">申请免费GitPages空间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成本地ssh添加"><span class="nav-number">2.2.</span> <span class="nav-text">生成本地ssh添加</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上传本地hexo静态文件到GitPages空间"><span class="nav-number">3.</span> <span class="nav-text">上传本地hexo静态文件到GitPages空间</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置hexo部署地址"><span class="nav-number">3.1.</span> <span class="nav-text">配置hexo部署地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#上传文件"><span class="nav-number">3.2.</span> <span class="nav-text">上传文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Markdown使用"><span class="nav-number">4.</span> <span class="nav-text">Markdown使用</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SongZ</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"songsz"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+
+</body>
+</html>
