@@ -1,0 +1,794 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="gradle,maven," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="Maven仓库类型从 Maven 的依赖下载管理角度来看，Maven 仓库的可分为两类，远程仓库和本地仓库。 本地仓库是电脑硬盘上的一个目录，远程仓库是在指放在远程服务器上电脑硬盘上的 Maven 仓库目录，使用需添加远程仓库的地址，才能正常连接下载依赖。 Maven 的远程仓库分为中央仓库和私服仓库。中央仓库存放了世界各地用户上传的依赖包，比较出名的是JCenter 和 Maven Centra">
+<meta name="keywords" content="gradle,maven">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gradle中配置使用maven仓库">
+<meta property="og:url" content="http://yoursite.com/2018/05/31/maven仓库使用指南/index.html">
+<meta property="og:site_name" content="B.H.M.">
+<meta property="og:description" content="Maven仓库类型从 Maven 的依赖下载管理角度来看，Maven 仓库的可分为两类，远程仓库和本地仓库。 本地仓库是电脑硬盘上的一个目录，远程仓库是在指放在远程服务器上电脑硬盘上的 Maven 仓库目录，使用需添加远程仓库的地址，才能正常连接下载依赖。 Maven 的远程仓库分为中央仓库和私服仓库。中央仓库存放了世界各地用户上传的依赖包，比较出名的是JCenter 和 Maven Centra">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-31T08:26:16.006Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gradle中配置使用maven仓库">
+<meta name="twitter:description" content="Maven仓库类型从 Maven 的依赖下载管理角度来看，Maven 仓库的可分为两类，远程仓库和本地仓库。 本地仓库是电脑硬盘上的一个目录，远程仓库是在指放在远程服务器上电脑硬盘上的 Maven 仓库目录，使用需添加远程仓库的地址，才能正常连接下载依赖。 Maven 的远程仓库分为中央仓库和私服仓库。中央仓库存放了世界各地用户上传的依赖包，比较出名的是JCenter 和 Maven Centra">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Gradle中配置使用maven仓库 | B.H.M. </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">B.H.M.</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">马猴之家</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Gradle中配置使用maven仓库
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-05-31T16:47:33+08:00" content="2018-05-31">
+              2018-05-31
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/工具使用/" itemprop="url" rel="index">
+                    <span itemprop="name">工具使用</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/05/31/maven仓库使用指南/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/05/31/maven仓库使用指南/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Maven仓库类型"><a href="#Maven仓库类型" class="headerlink" title="Maven仓库类型"></a>Maven仓库类型</h3><p>从 Maven 的依赖下载管理角度来看，Maven 仓库的可分为两类，<strong>远程仓库</strong>和<strong>本地仓库</strong>。</p>
+<p>本地仓库是电脑硬盘上的一个目录，远程仓库是在指放在远程服务器上电脑硬盘上的 Maven 仓库目录，使用需添加远程仓库的地址，才能正常连接下载依赖。</p>
+<p>Maven 的远程仓库分为<strong>中央仓库</strong>和<strong>私服仓库</strong>。中央仓库存放了世界各地用户上传的依赖包，比较出名的是<strong>JCenter</strong> 和 <strong>Maven Central</strong>，开源的第三方依赖一般都会上传到这两个中央仓库，这样我们只用添加这两个中央仓库的链接地址，就可以下载各种我们需要的依赖了。</p>
+<p>由于每次构建都需要从中央仓库下载依赖，对于中央仓库的服务器来说，压力很大，间接导致下载速度很慢。并且，上传到中央仓库的依赖都是开源的，只要知道名字，用户就都能下载，虽然开源精神是值得倡导的，但是一些公司内部的核心依赖包，出于一些考虑，无法直接开源。于是，私服仓库就诞生了。我们可以使用专门的 Maven 仓库管理软件来搭建私服，比如：Apache Archiva，Artifactory，Sonatype Nexus。公司使用的是 <strong>Sonatype Nexus</strong>。在公司的局域网，搭建一个 Nexus 仓库，把公司内部不想开源的依赖包上传到私服仓库中，这样下载依赖的需满足两个条件，私服仓库的地址和在公司局域网内，一定程度上有个保密和安全性。</p>
+<h3 id="仓库的两种类型"><a href="#仓库的两种类型" class="headerlink" title="仓库的两种类型"></a>仓库的两种类型</h3><p>Maven中的仓库分为两种，snapshot快照仓库和release发布仓库。snapshot快照仓库用于保存开发过程中的不稳定版本，release正式仓库则是用来保存稳定的发行版本。</p>
+<p>快照版本和正式版本的主要区别在于，本地获取这些依赖的机制有所不同。</p>
+<p>release版本第一次构建的时候会把该库从远程仓库中下载到本地仓库缓存，如果版本号不变，以后再次构建都不会去访问远程仓库了。</p>
+<p>snapshot版本每次构建时都会优先去远程仓库下载最新的。为了兼顾本地缓存，也可以通过配置来决定向远程仓库中更新SNAPSHOT版本的频率。</p>
+<h3 id="Gradle如何使用Maven仓库中的库"><a href="#Gradle如何使用Maven仓库中的库" class="headerlink" title="Gradle如何使用Maven仓库中的库"></a>Gradle如何使用Maven仓库中的库</h3><ol>
+<li><p>配置需要使用的maven仓库地址</p>
+<p>在全局Gradle文件中设置Maven仓库地址。如果需要用snapshot则也需要配置snapshot库的地址。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">allprojects </span><br><span class="line">&#123;    </span><br><span class="line">    repositories &#123;        </span><br><span class="line">        maven</span><br><span class="line">        &#123;url <span class="string">"http://nexus.gowild.net:8181/content/repositories/gowild-tob/"</span> &#125;        </span><br><span class="line">        maven </span><br><span class="line">        &#123; url <span class="string">"http://nexus.gowild.net:8181/content/repositories/gowild-tob-snapshots/"</span>&#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用maven仓库中某个库的release版本</p>
+<p>在需要使用的project的gradle文件中添加对应依赖。依赖描述由三部分组成，由”:”隔开。第一部分为groupid，是标示项目创建团体或组织的唯一标志符，通常是域名倒写比如com.gowild.tob；第二部分artifactId 是项目唯一的标示，比如wifi；第三部分为版本号，比如1.0.0。</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    <span class="function">compile <span class="title">fileTree</span><span class="params">(include: [<span class="string">'*.jar'</span>], dir: <span class="string">'libs'</span>)</span></span></span><br><span class="line"><span class="function">    compile 'com.gowild.tob.wifi:wifi:1.0.0'</span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>使用maven仓库中某个库的snapshot版本 </p>
+<p> 固定规则，在版本号后面加上-SNAPSHOT，其中SNAPSHOT要为大写。</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    <span class="function">compile <span class="title">fileTree</span><span class="params">(include: [<span class="string">'*.jar'</span>], dir: <span class="string">'libs'</span>)</span></span></span><br><span class="line"><span class="function">    compile 'com.gowild.tob.wifi:wifi:1.0.0-SNAPSHOT'</span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>使用aar或者jar</p>
+<p> 如果maven仓库里面同时有某个项目的aar或者jar文件，要引用其中一个的话，在后面加@jar或者@aar。</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    <span class="function">compile <span class="title">fileTree</span><span class="params">(include: [<span class="string">'*.jar'</span>], dir: <span class="string">'libs'</span>)</span></span></span><br><span class="line"><span class="function">    compile 'com.gowild.tob.wifi:wifi:1.0.0@jar'</span></span><br><span class="line"><span class="function"><span class="comment">//    compile 'com.gowild.tob.wifi:wifi:1.0.0@aar'</span></span></span><br><span class="line"><span class="function"><span class="comment">//    compile 'com.gowild.tob.wifi:wifi:1.0.0-SNAPSHOT@jar'</span></span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="配置snapshot库的更新时间"><a href="#配置snapshot库的更新时间" class="headerlink" title="配置snapshot库的更新时间"></a>配置snapshot库的更新时间</h3><p>如果项目中引用了snapshot库，而gradle每次构建的时候没有刷新snapshot库，这是因为snapshot有缓存时间。修改project中gradle配置如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//快照版本及时刷新library</span></span><br><span class="line">configurations.all &#123;</span><br><span class="line">    resolutionStrategy.cacheChangingModulesFor <span class="number">0</span>, <span class="string">'seconds'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Gradle打包并发布库到maven仓库"><a href="#Gradle打包并发布库到maven仓库" class="headerlink" title="Gradle打包并发布库到maven仓库"></a>Gradle打包并发布库到maven仓库</h3><p>如果需要将项目打包jar包或aar包发布到maven仓库中，供其他项目使用，参考如下：</p>
+<ol>
+<li><p>在项目根目录创建nexus_maven_upload.gradle文件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">//使用mavenpublish插件</span></span><br><span class="line">  apply plugin: <span class="string">'maven-publish'</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">//定义一个用于存储jar名称的变量</span></span><br><span class="line">   ext &#123; cname = <span class="string">'builtJar.jar'</span> &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//获取配置</span></span><br><span class="line">   Properties properties = <span class="keyword">new</span> Properties()</span><br><span class="line">   properties.load(project.rootProject.file(<span class="string">'nexus_maven_upload.properties'</span>).newDataInputStream())</span><br><span class="line"></span><br><span class="line">   <span class="function">task <span class="title">sourcesJar</span><span class="params">(type: Jar)</span> </span>&#123;</span><br><span class="line">       from android.sourceSets.main.java.srcDirs</span><br><span class="line">       classifier = <span class="string">'sources'</span></span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function">task <span class="title">javadoc</span><span class="params">(type: Javadoc)</span> </span>&#123;</span><br><span class="line">       failOnError <span class="keyword">false</span></span><br><span class="line">       source = android.sourceSets.main.java.sourceFiles</span><br><span class="line">       classpath += project.files(android.getBootClasspath().join(File.pathSeparator))</span><br><span class="line">       classpath += configurations.compile</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function">task <span class="title">javadocJar</span><span class="params">(type: Jar, dependsOn: javadoc)</span> </span>&#123;</span><br><span class="line">       classifier = <span class="string">'javadoc'</span></span><br><span class="line">       from javadoc.destinationDir</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//解决 JavaDoc 中文注释生成失败的问题</span></span><br><span class="line">   tasks.withType(Javadoc) &#123;</span><br><span class="line">       options.addStringOption(<span class="string">'Xdoclint:none'</span>, <span class="string">'-quiet'</span>)</span><br><span class="line">       options.addStringOption(<span class="string">'encoding'</span>, <span class="string">'UTF-8'</span>)</span><br><span class="line">       options.addStringOption(<span class="string">'charSet'</span>, <span class="string">'UTF-8'</span>)</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function">task <span class="title">clearJar</span><span class="params">(type: Delete)</span> </span>&#123;</span><br><span class="line">       println(<span class="string">"clearJar=========================&gt;"</span>)</span><br><span class="line">       delete <span class="string">"build/libs/$&#123;project.cname&#125;"</span></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   task generateJarName &#123;</span><br><span class="line">       def baseName = <span class="string">"gowild"</span></span><br><span class="line">       def appendix = project.getName()</span><br><span class="line">       def version = properties.getProperty(<span class="string">"POM_VERSION"</span>)</span><br><span class="line">       def classifier = <span class="string">"release"</span></span><br><span class="line">       def extension = <span class="string">"jar"</span></span><br><span class="line">       project.cname = baseName + <span class="string">"-"</span> + appendix + <span class="string">"-"</span> + version + <span class="string">"-"</span> + classifier + <span class="string">"."</span> + extension</span><br><span class="line">       println(<span class="string">"cname===============&gt;"</span> + project.cname)</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function">task <span class="title">buildJar</span><span class="params">(dependsOn: [<span class="string">'compileReleaseJavaWithJavac'</span>], type: Jar)</span> </span>&#123;</span><br><span class="line">       println(<span class="string">"buildJar=========================&gt;"</span>)</span><br><span class="line">       archiveName = project.cname</span><br><span class="line">       <span class="comment">//需打包的资源所在的路径集</span></span><br><span class="line">       def srcClassDir = [project.buildDir.absolutePath + <span class="string">"/intermediates/classes/release"</span>]</span><br><span class="line">       <span class="comment">//初始化资源路径集</span></span><br><span class="line">       from srcClassDir</span><br><span class="line">       exclude <span class="string">'**/BuildConfig.class'</span>, <span class="string">'**/R.class'</span></span><br><span class="line">       exclude &#123; it.name.startsWith(<span class="string">'R$'</span>) &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   publishing &#123;</span><br><span class="line">       publications &#123;</span><br><span class="line">          <span class="comment">//发布jar包</span></span><br><span class="line">        jar(MavenPublication) &#123;</span><br><span class="line">            println(<span class="string">"config jar=========================&gt;"</span>)</span><br><span class="line">            groupId properties.getProperty(<span class="string">"POM_GROUP_ID"</span>)</span><br><span class="line">            artifactId properties.getProperty(<span class="string">"POM_ATRIFACT_ID"</span>)</span><br><span class="line">            version properties.getProperty(<span class="string">"POM_VERSION"</span>)</span><br><span class="line">            def desc = properties.getProperty(<span class="string">"POM_DESC"</span>)</span><br><span class="line">            def packaging = properties.getProperty(<span class="string">"POM_PACKAGING"</span>)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (packaging == <span class="string">"jar"</span>) &#123;</span><br><span class="line">                <span class="comment">//添加jar包</span></span><br><span class="line">                artifact(<span class="string">"$projectDir/build/libs/$&#123;project.cname&#125;"</span>)</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (packaging == <span class="string">"aar"</span>) &#123;</span><br><span class="line">                <span class="comment">//添加aar包</span></span><br><span class="line">                artifact(<span class="string">"$buildDir/outputs/aar/$&#123;project.getName()&#125;-release.aar"</span>)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//添加源码</span></span><br><span class="line">            artifact sourcesJar</span><br><span class="line">            artifact javadocJar</span><br><span class="line"></span><br><span class="line">            pom.withXml &#123;</span><br><span class="line">                <span class="keyword">if</span> (packaging == <span class="string">"jar"</span>) &#123;</span><br><span class="line">                    asNode().appendNode(<span class="string">'packaging'</span>, packageing)</span><br><span class="line">                &#125;</span><br><span class="line">                asNode().appendNode(<span class="string">'description'</span>, desc)</span><br><span class="line"></span><br><span class="line">                <span class="comment">//逐个添加依赖配置到pom文件</span></span><br><span class="line">                def dependencies = asNode().appendNode(<span class="string">'dependencies'</span>)</span><br><span class="line">configurations.getByName(<span class="string">"releaseCompileClasspath"</span>).getResolvedConfiguration().getFirstLevelModuleDependencies().each &#123;</span><br><span class="line">                    def dependency = dependencies.appendNode(<span class="string">'dependency'</span>)</span><br><span class="line">                    dependency.appendNode(<span class="string">'groupId'</span>, it.moduleGroup)</span><br><span class="line">                    dependency.appendNode(<span class="string">'artifactId'</span>, it.moduleName)</span><br><span class="line">                    dependency.appendNode(<span class="string">'version'</span>, it.moduleVersion)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">       repositories &#123;</span><br><span class="line">           maven &#123;</span><br><span class="line">               def url_snapshots = properties.getProperty(<span class="string">"POM_URL_SNAPSHOTS"</span>)</span><br><span class="line">               def url_release = properties.getProperty(<span class="string">"POM_URL_RELEASE"</span>)</span><br><span class="line">               def version = properties.getProperty(<span class="string">"POM_VERSION"</span>)</span><br><span class="line">               <span class="comment">//根据版本名称选择是发布到release还是snapshot库</span></span><br><span class="line">               <span class="keyword">if</span> (version.endsWith(<span class="string">'-SNAPSHOT'</span>)) &#123;</span><br><span class="line">                   url url_snapshots</span><br><span class="line">               &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                   url url_release</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="comment">//配置上传的用户名和密码</span></span><br><span class="line">               credentials &#123;</span><br><span class="line">                   username properties.getProperty(<span class="string">"nexus.user"</span>)</span><br><span class="line">                   password properties.getProperty(<span class="string">"nexus.password"</span>)</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//配置task依赖</span></span><br><span class="line">   <span class="comment">//打包前先清空</span></span><br><span class="line">   buildJar.dependsOn(<span class="string">'clearJar'</span>)</span><br><span class="line">   <span class="comment">//打包前先生成名字</span></span><br><span class="line">   buildJar.dependsOn(<span class="string">'generateJarName'</span>)</span><br><span class="line">   <span class="comment">//发布前先构建jar</span></span><br><span class="line">   publish.dependsOn(<span class="string">'buildJar'</span>)</span><br><span class="line">   <span class="comment">//发布前先构建release aar</span></span><br><span class="line">   publish.dependsOn(<span class="string">'assembleRelease'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在项目根目录创建配置文件nexus_maven_upload.properties</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">## Project maven upload properties.</span><br><span class="line">##仓库release url</span><br><span class="line">POM_URL_RELEASE=</span><br><span class="line">##仓库snapshots url</span><br><span class="line">POM_URL_SNAPSHOTS=</span><br><span class="line">POM_GROUP_ID=</span><br><span class="line">POM_ATRIFACT_ID=</span><br><span class="line">##如需发布snapshot版本，版本号后面加上名字"-SNAPSHOT"</span><br><span class="line">POM_VERSION=<span class="number">1.0</span>.0-SNAPSHOT</span><br><span class="line">##发布的描述</span><br><span class="line">POM_DESC=版本描述</span><br><span class="line">##发布的账号</span><br><span class="line">nexus.user=</span><br><span class="line">##发布的密码</span><br><span class="line">nexus.password=</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在需要使用该脚本的project或者module的gradle配置中添加上传脚本配置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply from: <span class="string">"$project.rootDir.path/nexus_maven_upload.gradle"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>命令行执行gradle publish发布，或者gradle task列表选择publish执行</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradle publish</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/gradle/" rel="tag">#gradle</a>
+          
+            <a href="/tags/maven/" rel="tag">#maven</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/18/Hexo博客搭建记录/" rel="next" title="Hexo博客搭建记录">
+                <i class="fa fa-chevron-left"></i> Hexo博客搭建记录
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/31/AndFix源码解析/" rel="prev" title="AndFix源码解析">
+                AndFix源码解析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/05/31/maven仓库使用指南/"
+           data-title="Gradle中配置使用maven仓库" data-url="http://yoursite.com/2018/05/31/maven仓库使用指南/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="SongZ" />
+          <p class="site-author-name" itemprop="name">SongZ</p>
+          <p class="site-description motion-element" itemprop="description">记录一些东西</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/songszs" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Songszang" target="_blank">
+                  
+                    <i class="fa fa-twitter"></i> Twitter
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/1267595990/profile?topnav=1&wvr=6&user=1&is_all=1" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Maven仓库类型"><span class="nav-number">1.</span> <span class="nav-text">Maven仓库类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#仓库的两种类型"><span class="nav-number">2.</span> <span class="nav-text">仓库的两种类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradle如何使用Maven仓库中的库"><span class="nav-number">3.</span> <span class="nav-text">Gradle如何使用Maven仓库中的库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置snapshot库的更新时间"><span class="nav-number">4.</span> <span class="nav-text">配置snapshot库的更新时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradle打包并发布库到maven仓库"><span class="nav-number">5.</span> <span class="nav-text">Gradle打包并发布库到maven仓库</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SongZ</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"songsz"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+
+</body>
+</html>
