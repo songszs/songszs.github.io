@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="代理模式,动态代理," />
 
 
 
@@ -57,16 +57,18 @@
 
 
 
-<meta name="description" content="记录一些东西">
-<meta property="og:type" content="website">
-<meta property="og:title" content="B.H.M.">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="简介Java动态代理和静态代理的区别在于动态。之所以称为动态是它可以在类和接口的未知情况下就确定代理的行为。 优点：  支持ART与Dalvik 签名验证 安全性高 轻便简单 无需重启  缺点：  不支持新增成员变量和修改成员变量 不支持新增类 不支持修改资源文件 由于是在native层替换方法，某些手机修改过底层实现，可能会出现兼容问题  原理官方提供的apkpatch.jar工具，通过smal">
+<meta name="keywords" content="代理模式,动态代理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java动态代理和静态代理的区别">
+<meta property="og:url" content="http://yoursite.com/2018/05/31/java动态代理/index.html">
 <meta property="og:site_name" content="B.H.M.">
-<meta property="og:description" content="记录一些东西">
+<meta property="og:description" content="简介Java动态代理和静态代理的区别在于动态。之所以称为动态是它可以在类和接口的未知情况下就确定代理的行为。 优点：  支持ART与Dalvik 签名验证 安全性高 轻便简单 无需重启  缺点：  不支持新增成员变量和修改成员变量 不支持新增类 不支持修改资源文件 由于是在native层替换方法，某些手机修改过底层实现，可能会出现兼容问题  原理官方提供的apkpatch.jar工具，通过smal">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-06T13:12:17.468Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="B.H.M.">
-<meta name="twitter:description" content="记录一些东西">
+<meta name="twitter:title" content="Java动态代理和静态代理的区别">
+<meta name="twitter:description" content="简介Java动态代理和静态代理的区别在于动态。之所以称为动态是它可以在类和接口的未知情况下就确定代理的行为。 优点：  支持ART与Dalvik 签名验证 安全性高 轻便简单 无需重启  缺点：  不支持新增成员变量和修改成员变量 不支持新增类 不支持修改资源文件 由于是在native层替换方法，某些手机修改过底层实现，可能会出现兼容问题  原理官方提供的apkpatch.jar工具，通过smal">
 
 
 
@@ -84,7 +86,7 @@
   };
 </script>
 
-  <title> B.H.M. </title>
+  <title> Java动态代理和静态代理的区别 | B.H.M. </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -103,9 +105,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -194,24 +194,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
 
+  <div id="posts" class="posts-expand">
     
-
-    
-    
-      
-      
-        
-        
-        
-      
-
-      
-    
-
-    
-      
 
   
   
@@ -231,10 +216,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2018/05/31/AndFix源码解析/" itemprop="url">
-                  AndFix源码解析
-                </a>
+                Java动态代理和静态代理的区别
               
             
           </h1>
@@ -276,8 +258,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2018/05/31/AndFix源码解析/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/05/31/AndFix源码解析/" itemprop="commentsCount"></span>
+                <a href="/2018/05/31/java动态代理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/05/31/java动态代理/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -298,9 +280,7 @@
       
 
       
-        
-          
-            <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>AndFix是阿里开源的热修复框架。其支持android2.3-7.0版本。可在不重启应用的情况下hook方法。主要用于紧急修复bug。</p>
+        <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>Java动态代理和静态代理的区别在于动态。之所以称为动态是它可以在类和接口的未知情况下就确定代理的行为。</p>
 <p>优点：</p>
 <ul>
 <li>支持ART与Dalvik</li>
@@ -350,29 +330,51 @@
 <li>native hook（知识深度的重要性）</li>
 </ol>
 
-          
-        
       
     </div>
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/代理模式/" rel="tag">#代理模式</a>
+          
+            <a href="/tags/动态代理/" rel="tag">#动态代理</a>
+          
+        </div>
       
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/31/maven仓库使用指南/" rel="next" title="Gradle中配置使用maven仓库">
+                <i class="fa fa-chevron-left"></i> Gradle中配置使用maven仓库
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/31/EventBus源码解析/" rel="prev" title="EventBus源码解析">
+                EventBus源码解析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
   </article>
 
 
-    
 
-  </section>
-
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -380,6 +382,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/05/31/java动态代理/"
+           data-title="Java动态代理和静态代理的区别" data-url="http://yoursite.com/2018/05/31/java动态代理/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -399,8 +409,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -473,6 +492,23 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原理"><span class="nav-number">2.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成修复补丁"><span class="nav-number">3.</span> <span class="nav-text">生成修复补丁</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#第一步，对比dex的不同。"><span class="nav-number">3.1.</span> <span class="nav-text">第一步，对比dex的不同。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第二步，反汇编dex并生成新的dex。"><span class="nav-number">3.2.</span> <span class="nav-text">第二步，反汇编dex并生成新的dex。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第三步，对修改后的dex签名，并写入配置文件。"><span class="nav-number">3.3.</span> <span class="nav-text">第三步，对修改后的dex签名，并写入配置文件。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#第四步，计算文件md5并重命名文件。"><span class="nav-number">3.4.</span> <span class="nav-text">第四步，计算文件md5并重命名文件。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#加载与替换"><span class="nav-number">4.</span> <span class="nav-text">加载与替换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#补丁验证以及管理"><span class="nav-number">5.</span> <span class="nav-text">补丁验证以及管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关键点"><span class="nav-number">6.</span> <span class="nav-text">关键点</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
       
 
     </div>
@@ -554,6 +590,167 @@
 
 
   
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
 
   
 
